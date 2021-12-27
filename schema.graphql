@@ -1,5 +1,4 @@
-type ExampleEntity @entity {
+type Fee @entity {
   id: ID!
-  count: BigInt!
-  accruedAmount: BigInt! # uint128
+  accruedAmount: BigDecimal!
 }

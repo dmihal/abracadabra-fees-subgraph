@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -8,40 +8,17 @@ dataSources:
     source:
       address: "0x806e16ec797c69afa8590A55723CE4CC1b54050E"
       abi: Cauldron
+      startBlock: 13148516
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       entities:
-        - LogAccrue
-        - LogAddCollateral
-        - LogBorrow
-        - LogExchangeRate
-        - LogFeeTo
-        - LogRemoveCollateral
-        - LogRepay
-        - LogWithdrawFees
-        - OwnershipTransferred
+        - Fees
       abis:
         - name: Cauldron
           file: ./abis/Cauldron.json
       eventHandlers:
         - event: LogAccrue(uint128)
           handler: handleLogAccrue
-        - event: LogAddCollateral(indexed address,indexed address,uint256)
-          handler: handleLogAddCollateral
-        - event: LogBorrow(indexed address,indexed address,uint256,uint256)
-          handler: handleLogBorrow
-        - event: LogExchangeRate(uint256)
-          handler: handleLogExchangeRate
-        - event: LogFeeTo(indexed address)
-          handler: handleLogFeeTo
-        - event: LogRemoveCollateral(indexed address,indexed address,uint256)
-          handler: handleLogRemoveCollateral
-        - event: LogRepay(indexed address,indexed address,uint256,uint256)
-          handler: handleLogRepay
-        - event: LogWithdrawFees(indexed address,uint256)
-          handler: handleLogWithdrawFees
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
       file: ./src/mapping.ts
